@@ -6,7 +6,7 @@ gem 'rails', '4.0.0.rc1'
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'bson_ext'
 gem 'twitter-bootstrap-rails'
-gem 'highrise', github: 'lucasmartins/highrise', branch: 'edge'
+gem 'highrise-mapper', git: 'lucasmartins@railsnapraia.com:/home/lucasmartins/repos/highrise-mapper.git'
 gem 'pry'
 gem 'pry-nav'
 # Use SCSS for stylesheets
