@@ -7,7 +7,8 @@ gem 'mongoid', github: 'mongoid/mongoid'
 gem 'bson_ext'
 gem 'twitter-bootstrap-rails'
 gem 'highrise', github: 'lucasmartins/highrise', branch: 'edge'
-
+gem 'pry'
+gem 'pry-nav'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
 

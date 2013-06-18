@@ -1,4 +1,19 @@
-module HighriseMapper  
+module HighriseMapper
+
+  def self.config(root_dir=nil)
+    @config ||= load_config
+  end
+
+  def self.load_config(root_dir=nil)
+    root_dir ||= Pathname.new(Dir.pwd)
+    path = root_dir.join("config/highrise_mapper.yml")
+
+    raise "Couldn't find config/highrise_mapper.yml file at #{path}." unless File.file?(path)
+    content = File.read(path)
+    erb = ERB.new(content).result
+    YAML.load(erb).with_indifferent_access
+  end
+
   module Context
     module ClassMethods
       
@@ -36,8 +51,33 @@ module HighriseMapper
     
     module InstanceMethods
       def save_to_highrise
+        unless HighriseMapper.config['person'].is_a? Hash
+          raise 'Your highrise_mapper.yml does not contain the "person" configuration key.'  
+        end
         self.highrise_context.setup_highrise
+        highrise_person = Highrise::Person.new(build_highrise_hash)
+
+        begin
+          highrise_person.save!
+        rescue Exception => e
+          puts highrise_person.errors
+        end
         
+        return highrise_person
+      end
+
+      def build_highrise_hash
+        new_hash = {}
+        config = HighriseMapper.config
+        config['person'].each do |k,v|
+          if k=='email_address'
+            new_hash['contact_data']={'email_addresses'=>[{'address'=> self.send(v),'location'=>''}]}
+          else
+            new_hash[k]=self.send(v)
+          end
+          
+        end
+        return new_hash
       end
     end
     
