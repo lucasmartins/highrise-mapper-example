@@ -8,13 +8,14 @@ class Person
   field :job_title, type: String
   field :phone, type: String
   field :website, type: String
+  field :highrise_id, type: Fixnum
 
   belongs_to :company
 
   validates :name, :email, :company, :presence => true
 
-  def highrise_mapping
-    {'first-name'=>self.name,'last-name'=>self.last_name,'company-name'=>self.company_name,'contact-data'=>['email-addresses'=>[{'address'=>self.email}]]}
+  def full_name
+    "#{name} #{last_name}"
   end
 
   def highrise_context

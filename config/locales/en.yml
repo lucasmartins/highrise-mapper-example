@@ -20,4 +20,18 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  helpers:
+    links:
+      save_to_highrise: 'Save to Highrise'
+      delete_from_highrise: 'Delete from Highrise'
+  mongoid:
+    models:
+      person: 'Person'
+    attributes:
+      person:
+        name: 'Name'
+        email: 'Email'
+        company_name: 'Company'
+        job_title: 'Job Title'
+        phone: 'Phone'
+        on_highrise: 'On Highrise?'

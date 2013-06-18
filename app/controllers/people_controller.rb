@@ -1,10 +1,10 @@
 class PeopleController < ApplicationController
-  before_action :set_person, only: [:show, :edit, :update, :destroy]
+  before_action :set_person, only: [:show, :edit, :update, :destroy, :delete_from_highrise, :save_to_highrise]
 
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @people = Person.where(company_id: current_context.id)
   end
 
   # GET /people/1
@@ -61,10 +61,27 @@ class PeopleController < ApplicationController
     end
   end
 
+  def delete_from_highrise
+    @person.delete_from_highrise
+    @person.highrise_id=nil
+    @person.save
+    redirect_to '/', notice: 'Person was successfully deleted from Highrise'
+  end
+
+  def save_to_highrise
+    @person.highrise_id = @person.save_to_highrise
+    @person.save
+    redirect_to '/', notice: "Person was saved to Highrise with id:#{@person.highrise_id}."
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_person
-      @person = Person.find(params[:id])
+      if params[:id]!=nil
+        @person = Person.find(params[:id])
+      else
+        @person = Person.find(params[:person_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

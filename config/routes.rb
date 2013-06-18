@@ -1,11 +1,17 @@
 HighriseMapperExample::Application.routes.draw do
-  resources :people
+  resources :companies
+
+  resources :people do
+    get 'highrise_save' => 'people#save_to_highrise'
+    get 'highrise_delete' => 'people#delete_from_highrise'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'people#index'
+  get 'context/switch/:company_id' => 'context#switch'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
