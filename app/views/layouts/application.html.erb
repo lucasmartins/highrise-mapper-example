@@ -44,10 +44,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#"><%= current_context.name %></a>
+          <%= link_to current_context.name,current_context, class:'brand' %>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to 'This is a sample application to demonstrate how to use HighriseMapper', '#'  %></li>
+              <li><%= link_to 'Home', '/'  %></li>
+              <li><%= link_to 'This is a sample application to demonstrate how to use HighriseMapper', '/'  %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
