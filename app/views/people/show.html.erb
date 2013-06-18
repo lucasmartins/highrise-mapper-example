@@ -4,8 +4,6 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:_id) %>:</strong></dt>
-  <dd><%= @person._id %></dd>
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @person.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:last_name) %>:</strong></dt>
@@ -21,7 +19,7 @@
   <dt><strong><%= model_class.human_attribute_name(:website) %>:</strong></dt>
   <dd><%= @person.website %></dd>
   <dt><strong><%= model_class.human_attribute_name(:company_id) %>:</strong></dt>
-  <dd><%= @person.company_id %></dd>
+  <dd><%= @person.company.name %></dd>
 </dl>
 
 <div class="form-actions">
