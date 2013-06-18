@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0.rc1'
 
@@ -7,7 +7,7 @@ gem 'mongoid', github: 'mongoid/mongoid'
 gem 'bson_ext'
 gem 'twitter-bootstrap-rails'
 gem 'highrise-rails4'
-gem 'highrise_mapper', git: 'lucasmartins@railsnapraia.com:/home/lucasmartins/repos/highrise-mapper.git'
+gem 'highrise_mapper'
 gem 'pry'
 gem 'pry-nav'
 gem 'rspec'
